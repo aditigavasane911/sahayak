@@ -7,6 +7,7 @@ import {
 } from "./utils/firebaseService";
 import { onAuthStateChanged } from "firebase/auth";
 import AuthPortal from "./components/AuthPortal";
+import LandingHero from "./components/LandingHero";
 import OnboardingQuiz from "./components/OnboardingQuiz";
 import HomeFeed from "./components/HomeFeed";
 import ChatScreen from "./components/ChatScreen";
@@ -45,6 +46,7 @@ export default function App() {
   const [loadingUser, setLoadingUser] = useState(true);
   const [activeTab, setActiveTab] = useState("feed");
   const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [authScreen, setAuthScreen] = useState(null); // null (Landing page), 'login', 'signup'
   
   // Accessibility state
   const [darkMode, setDarkMode] = useState(false);
@@ -164,10 +166,30 @@ export default function App() {
 
   // Not Logged In
   if (!user) {
+    if (!authScreen) {
+      return (
+        <div className="min-h-screen w-full relative overflow-y-auto bg-[#FAF7F2]">
+          {/* Mesh gradients */}
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-orange-200 opacity-20 filter blur-[80px]"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-teal-100 opacity-30 filter blur-[80px]"></div>
+          
+          <LandingHero 
+            selectedLang={selectedLanguage} 
+            onSelectLang={setSelectedLanguage}
+            onLogin={() => setAuthScreen('login')}
+            onSignUp={() => setAuthScreen('signup')}
+            loadingUser={loadingUser}
+          />
+        </div>
+      );
+    }
+
     return (
       <AuthPortal 
+        initialScreen={authScreen}
         onAuthSuccess={handleAuthSuccess} 
         selectedLang={selectedLanguage} 
+        onBack={() => setAuthScreen(null)}
       />
     );
   }

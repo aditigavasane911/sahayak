@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { registerWithEmail, loginWithEmail, loginWithGoogle, loginWithApple, loginAsGuest } from "../utils/firebaseService";
-import { Mail, Lock, User, Sparkles, AlertTriangle, ArrowRight, UserCheck } from "lucide-react";
+import { Mail, Lock, User, Sparkles, AlertTriangle, ArrowRight, UserCheck, ArrowLeft } from "lucide-react";
 
-export default function AuthPortal({ onAuthSuccess, selectedLang }) {
-  const [isSignUp, setIsSignUp] = useState(false);
+export default function AuthPortal({ onAuthSuccess, selectedLang, initialScreen, onBack }) {
+  const [isSignUp, setIsSignUp] = useState(initialScreen === "signup");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -129,6 +129,16 @@ export default function AuthPortal({ onAuthSuccess, selectedLang }) {
       <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-teal-100 opacity-30 filter blur-[80px]"></div>
 
       <div className="bg-white rounded-3xl border border-gray-100 shadow-xl w-full max-w-md p-8 relative z-10 space-y-6">
+        {/* Back Button */}
+        {onBack && (
+          <button 
+            onClick={onBack}
+            className="absolute top-6 left-6 p-2 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition"
+            title="Go Back"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+        )}
         {/* Logo */}
         <div className="text-center space-y-2">
           <div className="text-3xl justify-center flex select-none">🤝</div>

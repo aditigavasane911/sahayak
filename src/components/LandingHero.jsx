@@ -2,14 +2,16 @@ import React from "react";
 import { LANGUAGES } from "../utils/mockData";
 import { ShieldCheck, MessageSquare, ClipboardCheck, Sparkles } from "lucide-react";
 
-export default function LandingHero({ selectedLang, onSelectLang, onStart, loadingUser }) {
+export default function LandingHero({ selectedLang, onSelectLang, onLogin, onSignUp, loadingUser }) {
   
   const translations = {
     en: {
       title: "Sahayak",
       tagline: "Your AI-Powered Civic Companion",
-      subText: "Empowering citizens with multilingual assistance, secure issue reporting, and proactive welfare scheme discovery.",
+      subText: "Empowering citizens with multilingual assistance, secure issue reporting, and proactive welfare welfare scheme discovery.",
       startBtn: "Get Started",
+      loginBtn: "Sign In",
+      signUpBtn: "Create Account",
       features: "Core Features",
       feature1: "Multilingual AI Support",
       feature2: "Private Issue Reporting",
@@ -20,6 +22,8 @@ export default function LandingHero({ selectedLang, onSelectLang, onStart, loadi
       tagline: "आपका एआई-संचालित नागरिक साथी",
       subText: "बहुभाषी सहायता, सुरक्षित समस्या रिपोर्टिंग और कल्याणकारी योजनाओं की खोज के साथ नागरिकों को सशक्त बनाना।",
       startBtn: "शुरू करें",
+      loginBtn: "साइन इन करें",
+      signUpBtn: "खाता बनाएं",
       features: "मुख्य विशेषताएं",
       feature1: "बहुभाषी एआई सहायता",
       feature2: "सुरक्षित शिकायत पंजीकरण",
@@ -30,16 +34,20 @@ export default function LandingHero({ selectedLang, onSelectLang, onStart, loadi
       tagline: "आपला एआय-आधारित नागरी सहकारी",
       subText: "नागरिकांना बहुभाषिक सहाय्य, सुरक्षित तक्रार नोंदणी आणि शासकीय लोककल्याणकारी योजनांचा लाभ मिळवून देण्यास सक्षम व्यासपीठ.",
       startBtn: "सुरू करा",
+      loginBtn: "साइन इन करा",
+      signUpBtn: "खाते तयार करा",
       features: "मुख्य वैशिष्ट्ये",
       feature1: "बहुभाषिक एआय सहाय्य",
       feature2: "सुरक्षित तक्रार नोंदणी",
-      feature3: "नागरी पुरस्कार प्रणाली"
+      feature3: "नागरिक पुरस्कार प्रणाली"
     },
     te: {
       title: "సహాయక్",
       tagline: "మీ AI-ఆధారిత పౌర సహచరుడు",
       subText: "బహుభాషా సహాయం, సురక్షితమైన సమస్యల నివేదిక మరియు సంక్షేమ పథకాలను సులభంగా తెలుసుకోవడం ద్వారా పౌరులను శక్తివంతం చేయడం.",
       startBtn: "ప్రారంభించండి",
+      loginBtn: "సైన్ ఇన్",
+      signUpBtn: "ఖాతా సృష్టించండి",
       features: "ప్రధాన ఫీచర్లు",
       feature1: "బహుభాషా AI సహాయం",
       feature2: "సురక్షిత ఫిర్యాదు నివేదిక",
@@ -50,6 +58,8 @@ export default function LandingHero({ selectedLang, onSelectLang, onStart, loadi
       tagline: "உங்கள் AI-ஆற்றல் கொண்ட குடிமைத் தோழன்",
       subText: "பல்மொழி உதவி, பாதுகாப்பான குறை தீர்க்கும் பதிவு மற்றும் மக்கள் நலத்திட்டங்களை கண்டறிவதில் குடிமக்களை மேம்படுத்துதல்.",
       startBtn: "தொடங்கவும்",
+      loginBtn: "உள்நுழைய",
+      signUpBtn: "கணக்கு உருவாக்க",
       features: "முக்கிய அம்சங்கள்",
       feature1: "பல்மொழி AI உதவி",
       feature2: "பாதுகாப்பான குறை பதிவு",
@@ -60,9 +70,11 @@ export default function LandingHero({ selectedLang, onSelectLang, onStart, loadi
       tagline: "ನಿಮ್ಮ AI-ಚಾಲಿತ ನಾಗರಿಕ ಒಡನಾಡಿ",
       subText: "ಬಹುಭಾಷಾ ನೆರವು, ಸುರಕ್ಷಿತ ದೂರು ಸಲ್ಲಿಕೆ ಮತ್ತು ಜನಕಲ್ಯಾಣ ಯೋಜನೆಗಳ ತ್ವರಿತ ಶೋಧನೆಯೊಂದಿಗೆ ನಾಗರಿಕರ ಸಬಲೀಕರಣ.",
       startBtn: "ಪ್ರಾರಂಭಿಸಿ",
+      loginBtn: "ಸೈನ್ ಇನ್",
+      signUpBtn: "ಖಾತೆ ತೆರೆಯಿರಿ",
       features: "ಮುಖ್ಯ ವೈಶಿಷ್ಟ್ಯಗಳು",
       feature1: "ಬಹುಭಾಷಾ AI ಸಹಾಯ",
-      feature2: "ಸುರಕ್ಷಿತ ದೂರು ಸಲ್ಲಿಕೆ",
+      feature2: "ಸುವ್ಯವಸ್ಥಿತ ದೂರು ಸಲ್ಲಿಕೆ",
       feature3: "ನಾಗರಿಕ ಪಾಯಿಂಟ್ಸ್ ಮತ್ತು ಬಹುಮಾನ"
     }
   };
@@ -119,24 +131,31 @@ export default function LandingHero({ selectedLang, onSelectLang, onStart, loadi
         </div>
       </div>
 
-      {/* CTA Button */}
-      <button
-        onClick={onStart}
-        disabled={loadingUser}
-        className="px-10 py-4 bg-saffron text-white hover:bg-saffron-dark rounded-2xl font-bold text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-3 disabled:opacity-50"
-      >
-        {loadingUser ? (
-          <>
+      {/* Action Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-md mx-auto">
+        <button
+          onClick={onSignUp}
+          disabled={loadingUser}
+          className="w-full sm:w-auto px-8 py-3.5 bg-saffron text-white hover:bg-saffron-dark rounded-2xl font-bold text-base shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-50"
+        >
+          {loadingUser ? (
             <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-            Connecting...
-          </>
-        ) : (
-          <>
-            {t.startBtn}
-            <span className="text-xl">➔</span>
-          </>
-        )}
-      </button>
+          ) : (
+            <>
+              {t.signUpBtn || "Create Account"}
+              <span className="text-lg">➔</span>
+            </>
+          )}
+        </button>
+
+        <button
+          onClick={onLogin}
+          disabled={loadingUser}
+          className="w-full sm:w-auto px-8 py-3.5 bg-white border border-gray-200 text-gray-700 hover:border-saffron hover:bg-orange-50 hover:bg-opacity-40 rounded-2xl font-bold text-base shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 disabled:opacity-50 animate-fade-in"
+        >
+          {t.loginBtn || "Sign In"}
+        </button>
+      </div>
 
       {/* Core features listing */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-16 text-left w-full">
